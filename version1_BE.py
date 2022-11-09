@@ -31,7 +31,7 @@ class node(threading.Thread):
         self.socket.sendto(byteToSend, (self.othersIp[nodeNr-1],self.ports[nodeNr-1]))
         print("message send")
     
-    def recieve_message(self):
+    def receive_message(self):
         bytesAddressPair = self.socket.recv(1024) #bufferSize  = 1024
         address = bytesAddressPair[1]
         revieveMsg = bytesAddressPair[0]
@@ -63,10 +63,10 @@ if __name__ == "__main__":
         if (counter > 100):
             break
         print("hello")
-        #node1.recieve_message()
+        #node1.receive_message()
         print("John2")
         node1.send(2)
-        node2.recieve_message()
+        node2.receive_message()
         counter += 1
     node1.join()
     node2.join()
